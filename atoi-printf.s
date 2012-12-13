@@ -41,26 +41,9 @@ main:
 Exit:	li	$v0,10		# System call, type 10, standard exit
 	syscall			# ...and call the OS
 
-
-## Daniel J. Ellard -- 03/13/94
-## printf.asm
-## an implementation of a simple printf work-alike.
-
-## printf
-## A simple printf-like function for the basic forms
-## of the %s, %d, %c, and %% formats, and can have 3 embedded
-## formats (all of the parameters are passed in registers).
-## If there are > 3 embedded formats, all but the first 3 are
-## completely ignored (not even printed).
-## Register Usage:
-## $a0,$s0 - pointer to format string
-## $a1,$s1 - format argument 1 (optional)
-## $a2,$s2 - format argument 2 (optional)
-## $a3,$s3 - format argument 3 (optional)
-## $s4 - count of formats processed.
-## $s5 - char at $s4.
-## $s6 - pointer to printf buffer
-##
+#printf function:
+#syntax: printf(char* string, arg1,arg2,arg3...)
+#supports %d %c %s %% %u %o %b %x
 	.text
 	.globl printf
 
